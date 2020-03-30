@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  db:
+    image: mysql:5.6.40
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    volumes:
+      - ./data:/var/lib/mysql
+
+  dbportal:
+    image: postgres:10.6
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.data/etc:/etc/postgresql
+      - ./.data/log:/var/log/postgresql
+      - ./.data/data:/var/lib/postgresql/data
+
